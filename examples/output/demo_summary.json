@@ -1,0 +1,296 @@
+{
+  "model": {
+    "name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "license": "Apache-2.0",
+    "local_safetensors_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+    "scoring": "next-token logprob of ' positive' / ' negative' (one token each, asserted)"
+  },
+  "data": {
+    "dataset": "SST-2 (GLUE benchmark distribution: stanfordnlp/sst2 on Hugging Face)",
+    "train_parquet_sha256": "c7921283b75a42e685f50edecb96798607ea0fcbfd0739ee8975f22c12d55f09",
+    "validation_parquet_sha256": "fb00fe008f6828f86ba2beda8415a4cf5da0c884f21c5f238c87131b5aa19529",
+    "subset_rule": "demos = first 4 negative + first 4 positive train rows, merged in file order; queries = first 48 validation rows in file order",
+    "demo_examples": [
+      {
+        "train_index": 0,
+        "label": "negative",
+        "text": "hide new secretions from the parental units"
+      },
+      {
+        "train_index": 1,
+        "label": "negative",
+        "text": "contains no wit , only labored gags"
+      },
+      {
+        "train_index": 2,
+        "label": "positive",
+        "text": "that loves its characters and communicates something rather beautiful about human nature"
+      },
+      {
+        "train_index": 3,
+        "label": "negative",
+        "text": "remains utterly satisfied to remain the same throughout"
+      },
+      {
+        "train_index": 4,
+        "label": "negative",
+        "text": "on the worst revenge-of-the-nerds clich\u00e9s the filmmakers could dredge up"
+      },
+      {
+        "train_index": 6,
+        "label": "positive",
+        "text": "demonstrates that the director of such hollywood blockbusters as patriot games can still turn out a small , personal film with an emotional wallop ."
+      },
+      {
+        "train_index": 7,
+        "label": "positive",
+        "text": "of saucy"
+      },
+      {
+        "train_index": 9,
+        "label": "positive",
+        "text": "are more deeply thought through than in most ` right-thinking ' films"
+      }
+    ],
+    "query_label_counts": {
+      "positive": 23,
+      "negative": 25
+    }
+  },
+  "config": {
+    "seed": 20261029,
+    "main_orders": 16,
+    "loo_orders": 4,
+    "n_queries": 48,
+    "templates": {
+      "instruction": "Classify the sentiment of the review excerpt.",
+      "example_template": "Review: {text}\nSentiment: {label}",
+      "query_template": "Review: {text}\nSentiment:",
+      "separator": "\n\n"
+    }
+  },
+  "parity_check": {
+    "argmax_agree": true,
+    "max_abs_logprob_delta": 0.0,
+    "repeat_check": {
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 0.0
+    }
+  },
+  "cache_audit": [
+    {
+      "key": "main|0|0",
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 0.0
+    },
+    {
+      "key": "main|0|47",
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 3.814697265625e-06
+    },
+    {
+      "key": "main|7|13",
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 2.384185791015625e-07
+    },
+    {
+      "key": "loo3|2|10",
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 0.0
+    },
+    {
+      "key": "zero|0|5",
+      "argmax_agree": true,
+      "max_abs_logprob_delta": 0.23726511001586914
+    }
+  ],
+  "main_report": {
+    "stability": 0.9869791666666666,
+    "flip_rate": 0.03333333333333333,
+    "fragile_rate": 0.10416666666666667,
+    "unparsed_rate": 0.0,
+    "canonical_accuracy": 0.9375,
+    "mean_accuracy": 0.953125,
+    "accuracy_range": [
+      0.9375,
+      0.9583333333333334
+    ],
+    "majority_vote_accuracy": 0.9583333333333334,
+    "label_share": {
+      "negative": 0.4869791666666667,
+      "positive": 0.5130208333333334
+    }
+  },
+  "accuracy_by_order": [
+    0.9375,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9375,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9375,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9375,
+    0.9583333333333334
+  ],
+  "zero_shot": {
+    "stability": 1.0,
+    "flip_rate": 0.0,
+    "fragile_rate": 0.0,
+    "unparsed_rate": 0.0,
+    "canonical_accuracy": 0.9583333333333334,
+    "mean_accuracy": 0.9583333333333334,
+    "accuracy_range": [
+      0.9583333333333334,
+      0.9583333333333334
+    ],
+    "majority_vote_accuracy": 0.9583333333333334,
+    "label_share": {
+      "positive": 0.4791666666666667,
+      "negative": 0.5208333333333334
+    }
+  },
+  "leave_one_out": [
+    {
+      "removed_index": 0,
+      "removed_label": "negative",
+      "delta_mean_accuracy": -0.005208333333333259,
+      "delta_stability": -0.005208333333333259
+    },
+    {
+      "removed_index": 1,
+      "removed_label": "negative",
+      "delta_mean_accuracy": 0.0,
+      "delta_stability": -0.01041666666666663
+    },
+    {
+      "removed_index": 2,
+      "removed_label": "positive",
+      "delta_mean_accuracy": -0.03645833333333337,
+      "delta_stability": -0.046875
+    },
+    {
+      "removed_index": 3,
+      "removed_label": "negative",
+      "delta_mean_accuracy": -0.005208333333333259,
+      "delta_stability": -0.005208333333333259
+    },
+    {
+      "removed_index": 4,
+      "removed_label": "negative",
+      "delta_mean_accuracy": -0.005208333333333259,
+      "delta_stability": -0.015625
+    },
+    {
+      "removed_index": 5,
+      "removed_label": "positive",
+      "delta_mean_accuracy": 0.00520833333333337,
+      "delta_stability": 0.00520833333333337
+    },
+    {
+      "removed_index": 6,
+      "removed_label": "positive",
+      "delta_mean_accuracy": 0.0,
+      "delta_stability": -0.01041666666666663
+    },
+    {
+      "removed_index": 7,
+      "removed_label": "positive",
+      "delta_mean_accuracy": 0.00520833333333337,
+      "delta_stability": -0.005208333333333259
+    }
+  ],
+  "most_fragile_queries": [
+    {
+      "query_index": 13,
+      "answer": "positive",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 0.8125,
+      "n_flips": 3
+    },
+    {
+      "query_index": 44,
+      "answer": "negative",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 0.8125,
+      "n_flips": 3
+    },
+    {
+      "query_index": 5,
+      "answer": "positive",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 0.875,
+      "n_flips": 2
+    },
+    {
+      "query_index": 25,
+      "answer": "negative",
+      "canonical": "negative",
+      "modal": "negative",
+      "modal_share": 0.9375,
+      "n_flips": 1
+    },
+    {
+      "query_index": 33,
+      "answer": "negative",
+      "canonical": "positive",
+      "modal": "negative",
+      "modal_share": 0.9375,
+      "n_flips": 15
+    },
+    {
+      "query_index": 0,
+      "answer": "positive",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 1.0,
+      "n_flips": 0
+    },
+    {
+      "query_index": 1,
+      "answer": "negative",
+      "canonical": "negative",
+      "modal": "negative",
+      "modal_share": 1.0,
+      "n_flips": 0
+    },
+    {
+      "query_index": 2,
+      "answer": "positive",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 1.0,
+      "n_flips": 0
+    },
+    {
+      "query_index": 3,
+      "answer": "positive",
+      "canonical": "positive",
+      "modal": "positive",
+      "modal_share": 1.0,
+      "n_flips": 0
+    },
+    {
+      "query_index": 4,
+      "answer": "negative",
+      "canonical": "negative",
+      "modal": "negative",
+      "modal_share": 1.0,
+      "n_flips": 0
+    }
+  ],
+  "zero_shot_path_note": "The assembled zero-shot block came from the prefix-KV cache; its audit delta on the sampled zero-shot item was 0.237 nats (argmax agreeing), vs <= 3.8e-06 for every few-shot item \u2014 the short instruction-only prefix tokenizes differently at the boundary. All 48 zero-shot items were therefore re-scored with plain full forwards and the report rebuilt from those scores; this block is that rebuilt report.",
+  "zero_shot_rescore": {
+    "argmax_disagreements_vs_cache": [],
+    "max_abs_logprob_delta_vs_cache": 0.4837188720703125
+  }
+}

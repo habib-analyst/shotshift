@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shotshift"
+version = "0.1.0"
+description = "Few-shot example-order stability auditing for LLM classifiers — measure how much a model's predictions move when the in-context examples are reordered."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Habib Ur Rehman" }]
+keywords = [
+  "llm",
+  "evaluation",
+  "few-shot",
+  "in-context-learning",
+  "prompt",
+  "robustness",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "build>=1.0"]
+
+[project.urls]
+Homepage = "https://github.com/habib-analyst/shotshift"
+Issues = "https://github.com/habib-analyst/shotshift/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
